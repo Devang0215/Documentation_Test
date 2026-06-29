@@ -1,0 +1,46 @@
+name: Generate Docs and build website
+
+on:
+  push:
+    branches:
+      - develop
+    paths:
+      - 'typedoc.json'
+      - 'code-documentation/**'
+      - '!**/node_modules/**'
+
+jobs:
+  generate-docs:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      NODE_OPTIONS: '--max-old-space-size=4096'
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install dependencies
+        run: npm i
+
+      - name: Generate docs
+        run: npm run generate-docs
+
+      - name: Docs Generation Test
+        run: npm run docs:test
+
+      - name: Cleanup docs
+        run: npm run docs:cleanup
+
+      - name: Commit generated docs
+        uses: stefanzweifel/git-auto-commit-action@v7
+        with:
+          commit_message: 'docs: regenerate API docs'
