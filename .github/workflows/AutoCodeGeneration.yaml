@@ -1,46 +1,45 @@
-name: Generate Docs and build website
+name: Generate Documentation
 
 on:
   push:
     branches:
       - main
-    paths:
-      - 'typedoc.json'
-      - 'code-documentation/**'
-      - '!**/node_modules/**'
 
 jobs:
   generate-docs:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    env:
-      NODE_OPTIONS: '--max-old-space-size=4096'
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-
+      - uses: actions/setup-node@v4
         with:
-          node-version: 24
-          cache: npm
+          node-version: 20
 
-      - name: Install dependencies
-        run: npm i
+      - run: npm ci
 
-      - name: Generate docs
-        run: npm run generate-docs
+      - name: Generate documentation
+        run: |
+          npx typedoc
 
-      - name: Docs Generation Test
-        run: npm run docs:test
+      - name: Clone docs repo
+        run: |
+          git clone https://${{ secrets.DOCS_TOKEN }}@github.com/Devang0215/Documentation-Repo.git docs-repo
+          
+      - name: Copy documentation
+        run: |
+          rm -rf docs-repo/*
+          cp -R docs/* docs-repo/
 
-      - name: Cleanup docs
-        run: npm run docs:cleanup
+      - name: Commit changes
+        run: |
+          cd docs-repo
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
 
-      - name: Commit generated docs
-        uses: stefanzweifel/git-auto-commit-action@v7
-        with:
-          commit_message: 'docs: regenerate API docs'
+          git add .
+
+          git diff --cached --quiet && exit 0
+
+          git commit -m "Auto update documentation"
+          git push
