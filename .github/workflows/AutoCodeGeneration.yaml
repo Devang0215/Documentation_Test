@@ -29,7 +29,7 @@ jobs:
       - name: Copy documentation
         run: |
           rm -rf docs-repo/*
-          cp -R docs/* docs-repo/
+          cp -R my-website/docs/* docs-repo/
 
       - name: Commit changes
         run: |
