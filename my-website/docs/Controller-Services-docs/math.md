@@ -2,7 +2,7 @@
 
 ***
 
-[Documentation](README.md) / math
+[Documentation](README.md)   / math
 
 # math
 
