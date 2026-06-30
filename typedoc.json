@@ -1,0 +1,35 @@
+{
+  "entryPoints": ["./Controller-Services/"],
+  "exclude": [
+    "**/build/**",
+    "**/dist/**",
+    "**/*.test.ts",
+    "**/*.spec.ts",
+    "**/tests/**",
+    "**/node_modules/**",
+    "./my-website/**",
+    "./.docusaurus/**",
+    "./docker-compose*",
+    "**/jest.config.ts"
+  ],
+
+  "entryPointStrategy": "expand",
+  "tsconfig": "./Controller-Services/tsconfig.json",
+  "out": "./my-website/docs/Controller-Services-docs",
+  "plugin": ["typedoc-plugin-markdown"],
+
+  "readme": "none",
+  "excludePrivate": true,
+  "excludeExternals": true,
+  "hideGenerator": true,
+  "outputFileStrategy": "modules",
+
+  "disableSources": true,
+  "sort": ["source-order"],
+
+  "navigation": {
+    "includeCategories": false,
+    "includeGroups": false,
+    "includeFolders": true
+  }
+}

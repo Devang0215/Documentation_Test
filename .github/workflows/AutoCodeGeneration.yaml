@@ -16,7 +16,7 @@ jobs:
         with:
           node-version: 20
 
-      - run: npm ci
+      - run: npm i
 
       - name: Generate documentation
         run: |
@@ -25,7 +25,7 @@ jobs:
       - name: Clone docs repo
         run: |
           git clone https://${{ secrets.DOCS_TOKEN }}@github.com/Devang0215/Documentation-Repo.git docs-repo
-          
+
       - name: Copy documentation
         run: |
           rm -rf docs-repo/*
