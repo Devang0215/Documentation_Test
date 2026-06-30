@@ -1,5 +1,5 @@
 {
-  "entryPoints": ["./"],
+  "entryPoints": ["./Controller-Services/"],
   "exclude": [
     "**/build/**",
     "**/dist/**",
@@ -12,9 +12,10 @@
     "./docker-compose*",
     "**/jest.config.ts"
   ],
+
   "entryPointStrategy": "expand",
-  "tsconfig": "tsconfig.json",
-  "out": "my-website/docs/api",
+  "tsconfig": "./Controller-Services/tsconfig.json",
+  "out": "./my-website/docs/Controller-Services-docs",
   "plugin": ["typedoc-plugin-markdown"],
 
   "readme": "none",
@@ -22,8 +23,10 @@
   "excludeExternals": true,
   "hideGenerator": true,
   "outputFileStrategy": "modules",
+
   "disableSources": true,
   "sort": ["source-order"],
+
   "navigation": {
     "includeCategories": false,
     "includeGroups": false,
