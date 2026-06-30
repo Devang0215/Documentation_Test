@@ -10,7 +10,7 @@
 
 ### add()
 
-> **add**(`a`, `b`): `number`
+> **add**(`a`, `b`): `number` Hello From Devang
 
 Adds two numbers.
 
