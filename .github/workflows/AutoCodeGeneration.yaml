@@ -14,7 +14,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24
 
       - run: npm i
 
@@ -29,7 +29,7 @@ jobs:
       - name: Copy documentation
         run: |
           rm -rf docs-repo/*
-          cp -R my-website/docs/* docs-repo/
+          cp -R my-website/docs/* docs-repo/my-website
 
       - name: Commit changes
         run: |
@@ -38,8 +38,6 @@ jobs:
           git config user.email "github-actions@github.com"
 
           git add .
-
-          git diff --cached --quiet && exit 0
 
           git commit -m "Auto update documentation"
           git push

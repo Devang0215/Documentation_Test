@@ -1,5 +1,5 @@
 {
-  "entryPoints": ["./Controller-Services/"],
+  "entryPoints": ["./"],
   "exclude": [
     "**/build/**",
     "**/dist/**",
@@ -14,8 +14,8 @@
   ],
 
   "entryPointStrategy": "expand",
-  "tsconfig": "./Controller-Services/tsconfig.json",
-  "out": "./my-website/docs/Controller-Services-docs",
+  "tsconfig": "tsconfig.json",
+  "out": "./my-website/docs/",
   "plugin": ["typedoc-plugin-markdown"],
 
   "readme": "none",
