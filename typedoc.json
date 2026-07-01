@@ -15,7 +15,7 @@
 
   "entryPointStrategy": "expand",
   "tsconfig": "tsconfig.json",
-  "out": "./my-website/docs/",
+  "out": "my-website/docs/",
   "plugin": ["typedoc-plugin-markdown"],
 
   "readme": "none",
