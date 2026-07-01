@@ -31,7 +31,7 @@ jobs:
           rm -rf docs-repo/*
           cd docs-repo
           mkdir documentation-test
-          cp -R Code-Documentation/docs/* docs-repo/documentation-test/
+          cp -R my-website/* docs-repo/documentation-test/
 
       - name: Commit changes
         run: |
