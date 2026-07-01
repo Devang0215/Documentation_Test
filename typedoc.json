@@ -8,6 +8,7 @@
     "**/tests/**",
     "**/node_modules/**",
     "./my-website/**",
+    "./Code-Documentation/**",
     "./.docusaurus/**",
     "./docker-compose*",
     "**/jest.config.ts"
@@ -15,7 +16,7 @@
 
   "entryPointStrategy": "expand",
   "tsconfig": "tsconfig.json",
-  "out": "my-website/",
+  "out": "Code-Documentation/docs",
   "plugin": ["typedoc-plugin-markdown"],
 
   "readme": "none",
