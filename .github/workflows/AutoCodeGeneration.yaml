@@ -29,7 +29,9 @@ jobs:
       - name: Copy documentation
         run: |
           rm -rf docs-repo/*
-          cp -R my-website/docs/* docs-repo/my-website
+          cd docs-repo
+          mkdir documentation-test
+          cp -R my-website/docs/* docs-repo/documentation-test/
 
       - name: Commit changes
         run: |
